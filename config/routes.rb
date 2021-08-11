@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :public do
     resources :games
-    resources :users, only: [:index, :show, :edit]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     get 'homes/top'
   end
   namespace :admin do
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     get 'homes/top'
   end
-  
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -23,5 +23,5 @@ Rails.application.routes.draw do
 }
 
   root "homes#top"
- 
+
 end

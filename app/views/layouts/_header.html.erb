@@ -8,14 +8,16 @@
       <div class = "collapse navbar-collapse" id = "navbarNavDropdown">
         <ul class = "navbar-nav ml-auto">
         <% if admin_signed_in? %>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   admin_games_path, class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' 会員一覧 ',    admin_users_path, class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム投稿',   new_admin_game_path,        class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   admin_games_path,           class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' 会員一覧 ',    admin_users_path,           class: "btn btn-outline-dark" %></div></li>
           <li><div class = "ml-5" ><%= link_to ' タグ一覧', '#',    class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_admin_session_path,class: "btn btn-outline-dark",method: :delete %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_admin_session_path, class: "btn btn-outline-dark",method: :delete %></div></li>
         <% elsif user_signed_in? %>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   public_games_path,                            class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム投稿',   new_public_game_path,           class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   public_games_path,              class: "btn btn-outline-dark" %></div></li>
           <li><div class = "ml-5" ><%= link_to ' マイページ',   public_user_path(current_user), class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_user_session_path,                  class: "btn btn-outline-dark", method: :delete %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_user_session_path,      class: "btn btn-outline-dark", method: :delete %></div></li>
         <% else %>
           <li><div class = "ml-5" ><%= link_to ' 新規登録',     new_user_registration_path, class: "btn btn-outline-dark" %></div></li>
           <li><div class = "ml-5" ><%= link_to ' ログイン',     new_user_session_path ,     class: "btn btn-outline-dark" %></div></li>

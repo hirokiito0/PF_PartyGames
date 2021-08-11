@@ -17,7 +17,7 @@
       <% @users.each do |user| %>
       <tr>
         <td><%=user.id %></td>
-        <td><%#= attachment_image_tag(game.customers, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+        <td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
         <td>
           <%= link_to admin_user_path(user) do %>
             <%= user.name %>

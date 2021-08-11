@@ -18,12 +18,18 @@ class Public::GamesController < ApplicationController
     @game         = Game.new(games_params)
     @game.user_id = current_user.id
     if @game.save
-      redirect_to public_games_path
+      redirect_to public_user_path(current_user)
     else
-      redirect_to new_public_game_path
+      render  "new"
     end
   end
 
   def destroy
+  end
+
+  private
+
+  def games_params
+    params.require(:game).permit(:game_title, :game_image, :game_introduction, :recommended, :price)
   end
 end
