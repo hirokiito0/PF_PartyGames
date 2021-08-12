@@ -4,7 +4,10 @@ class Public::GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find_by(params[:id])
+    @game = Game.find(params[:id])
+    @comment = Comment.new
+    @comments = @game.comments
+    #.order(created_at: :desc)
   end
 
   def new
@@ -12,6 +15,7 @@ class Public::GamesController < ApplicationController
   end
 
   def edit
+    @game = Game.find(params[:id])
   end
 
   def create
@@ -21,6 +25,16 @@ class Public::GamesController < ApplicationController
       redirect_to public_user_path(current_user)
     else
       render  "new"
+    end
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    @game.update(games_params)
+    if @game.save
+      redirect_to public_game_path(@game.id), notice: "You have updated user successfully."
+    else
+      render "edit"
     end
   end
 
