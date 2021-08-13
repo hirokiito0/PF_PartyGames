@@ -33,7 +33,23 @@
       <div class='row'>
         <%= link_to '編集',edit_public_game_path(@game),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@game.id}" %>
       </div>
-      
+
+      <div class="comments">
+      <p>コメント件数：<%= @game.comments.count %></p>
+      <% @game.comments.each do |c| %>
+        <p><%= attachment_image_tag(game, :game_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></p>
+        <%= c.user.name %>
+        <%= c.created_at.strftime('%Y/%m/%d') %><%= c.comment %>
+      <% end %>
+      </div>
+
+      <div class="new-comment">
+      <%= form_with(url: public_game_comments_path(@game), local: true) do |f| %>
+        <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+      </div>
+
     </div>
   </div>
 </div>

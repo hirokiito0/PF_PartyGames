@@ -6,8 +6,6 @@ class Public::GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
-    @comments = @game.comments
-    #.order(created_at: :desc)
   end
 
   def new
