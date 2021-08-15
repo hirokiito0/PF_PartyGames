@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   namespace :public do
     resources :users, only: [:show, :edit, :update, :destroy]
     resources :games do
-      resources :comments, only: [:create, :destroy]
+      resources :comments,  only: [:create, :destroy]
+      resource  :favorites, only: [:create, :destroy]
     end
     get 'homes/top'
   end
