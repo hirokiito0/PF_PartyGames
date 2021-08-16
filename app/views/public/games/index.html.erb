@@ -1,9 +1,4 @@
 <h1 class="item pt-1 pl-3">投稿ゲーム一覧</h1>
-  <div class="social">
-    <%= link_to new_public_game_path do %>
-      <i class="fas fa-plus-circle fa-2x"></i>
-    <% end %>
-  </div>
 <div class="container px-5 px-sm-0">
   <div class="row">
   <table class="table table-hover table-inverse">
@@ -31,7 +26,20 @@
         <td>
             ♥<%= game.favorites.count %>
         </td>
-
+        <td>
+          <!--<div class="average-review-rating" data-score=<%#= game.average_rate %>></div>-->
+          <!--<script>-->
+          <!--  $('.average-comment-rating').raty({-->
+          <!--    readOnly: true,-->
+          <!--    starOn: "<%#= asset_path('star-on.png') %>",-->
+          <!--    starOff: "<%#= asset_path('star-off.png') %>",-->
+          <!--    starHalf: "<%#= asset_path('star-half.png') %>",-->
+          <!--    score: function() {-->
+          <!--      return $(this).attr('data-score')-->
+          <!--    }-->
+          <!--  });-->
+          <!--</script>-->
+        </td>
       </tr>
       <% end %>
     </tbody>
