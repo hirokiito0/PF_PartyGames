@@ -1,0 +1,6 @@
+<dl class="searchbox">
+  <%= search_form_for @search, url: public_games_path do |f| %>
+    <dt><%= f.text_field :game_title_cont ,placeholder: 'ゲームタイトルを入力...' %></dt>
+    <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+  <% end %>
+</dl>
