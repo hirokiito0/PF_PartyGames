@@ -34,7 +34,7 @@
           <tr>
             <th>画像</th>
             <th>ゲームタイトル</th>
-            <th>紹介文</th>
+            <th>評価</th>
             <th colspan="3"></th>
           </tr>
 
@@ -55,7 +55,20 @@
               </td>
 
               <td>
-                <%= game.game_introduction %>
+                <div class="average-comment-rating" data-score=<%= game.comments.average(:rate) %>></div>
+                                                <!--gameからcommentoの情報を受け取ってaverageメソッドにより平均を出力する-->
+                <script>
+                  $('.average-comment-rating').empty(); // 下記だけでは星がいくつも表示されてしまうので一度空にする
+                  $('.average-comment-rating').raty({   // 上記で出した平均値を星に反映させる
+                    readOnly: true,
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    score: function() {
+                      return $(this).attr('data-score')
+                    }
+                  });
+                </script>
               </td>
             </tr>
           <% end %>
