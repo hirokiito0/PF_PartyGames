@@ -1,0 +1,133 @@
+<h1>ゲーム詳細</h1>
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%=attachment_image_tag @game,:game_image,:fill, 60, 60, fallback: "no_image.jpg", class: "w-100 pt-5" %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <table class="table">
+        <tbody>
+          <tr>
+           <th>ゲームタイトル</th>
+           <th><%= @game.game_title %></th>
+          </tr>
+          <tr>
+        　 <th>紹介</th>
+           <th><%= @game.game_introduction %></th>
+          </tr>
+          <tr>
+        　 <th>お勧めする点</th>
+           <th><%= @game.recommended %></th>
+          </tr>
+          <!--<tr>-->
+          <!--  <th>ジャンル</th>-->
+          <!--  <th><%#= @item.genre.name %></th>-->
+          <!--</tr>-->
+          <tr>
+           <th>価格</th>
+           <th> <%= @game.price %>円</th>
+          </tr>
+          <tr>
+            <th>評価</th>
+            <th>
+              <div class="average-comment-rating" data-score=<%= @average_rate %>></div>
+                <script>
+                  $('.average-comment-rating').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
+                  $('.average-comment-rating').raty({    // 上記で出した平均値を星に反映させる
+                    readOnly: true,
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
+                    score: function() {
+                      return $(this).attr('data-score')
+                    }
+                  });
+                </script>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <% if @game.favorited_by?(current_user) %>
+              <p>
+                <%= link_to public_game_favorites_path(@game), method: :delete do %>
+                  ♥<%= @game.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to public_game_favorites_path(@game), method: :post do %>
+                  ♡<%= @game.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% end %>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <div class='row'>
+        <%= link_to '編集',edit_public_game_path(@game),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@game.id}" %>
+      </div>
+
+      <%= form_with(model: [@game, @comment], url: public_game_comments_path(@game), local: true) do |f| %>
+          <%#= render 'layouts/error_messages', object: f.object %>
+
+          <%= f.text_area :comment, rows:'5', placeholder: "コメント入力してください", class: "form-control form-control-sm" %>
+          <div id="rating-form">
+              <label>評価：</label>
+              <!--scoreNameの値をhidden_fieldでカラムに送っている-->
+              <%= f.hidden_field :rate, :value => 'score' %>
+          </div>
+
+          <%= f.submit "投稿する" %>
+      <% end %>
+
+
+      <script>
+          $('#rating-form').raty({
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              scoreName: 'comment[rate]'
+          });
+      </script>
+
+      <% @game.comments.each do |game_comment| %>
+          <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
+              <!--rateを表示-->
+              <div class="comment-rating" data-score="<%= game_comment.rate %>">評価：
+                <script>
+                  $('.comment-rating').raty({
+                    readOnly: true,
+                    score: function() {
+                    return $(this).attr('data-score');
+                    },
+                    path: '/assets/'
+                  });
+                </script>
+              </div>
+
+              <div class="text-left">
+                  <p>投稿者：<%= game_comment.user.name %></p>
+                  <p><%= game_comment.comment %></p>
+                  <%#= attachment_image_tag(game_comment, :image_id, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+              </div>
+
+              <div class="text-right">
+                  <p>
+                      投稿日：<%= game_comment.created_at.strftime('%Y/%m/%d') %> |
+                      <% if game_comment.user == current_user %>
+                          <%= link_to public_game_comment_path(game_comment.game, game_comment), method: :delete, class: "btn btn-sm btn-danger" do %>
+                              コメント削除 <i class="fas fa-trash"></i>
+                          <% end %>
+                      <% end %>
+                  </p>
+              </div>
+          </div>
+
+          <div class="pb-2"></div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
