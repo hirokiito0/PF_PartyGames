@@ -91,3 +91,11 @@ User.create(
   password_confirmation: "monburan",
   introduction: "ジュードですよろしく！",
   )
+
+Game.create(
+  user_id: "1",
+  game_title: "test",
+  game_introduction: "testtesttesttest",
+  recommended: "テストにいい",
+  price: "1000"
+  )
