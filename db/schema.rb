@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_040004) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.string "game_title", default: "", null: false
-    t.text "game_introduction", default: "", null: false
-    t.text "recommended", default: "", null: false
+    t.string "game_introduction", default: "", null: false
+    t.string "recommended", default: "", null: false
     t.string "game_image_id"
     t.integer "price", null: false
     t.datetime "created_at", null: false
