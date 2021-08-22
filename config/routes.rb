@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     resources :games do
       resources :comments,  only: [:create, :destroy]
       resource  :favorites, only: [:create, :destroy]
+      collection do
+        match 'search' => 'games#search', via: [:get, :post]
+      end
     end
     get 'homes/top'
   end

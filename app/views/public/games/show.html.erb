@@ -96,6 +96,7 @@
               <!--rateを表示-->
               <div class="comment-rating" data-score="<%= game_comment.rate %>">評価：
                 <script>
+                  $('.comment-rating').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
                   $('.comment-rating').raty({
                     readOnly: true,
                     score: function() {
