@@ -6,8 +6,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.string    :game_introduction, null: false, default: ""
       t.string    :recommended,       null: false, default: ""
       t.string  :game_image
-      t.integer :price,             null: false, default: ""
-
+      t.integer :price,             null: false, default: 0
       t.timestamps
     end
   end

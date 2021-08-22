@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_040004) do
     t.string "game_introduction", default: "", null: false
     t.string "recommended", default: "", null: false
     t.string "game_image_id"
-    t.integer "price", null: false
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
