@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   def set_search
     @search = Game.ransack(params[:q]) #検索ワードを受け取る
     @search_games = @search.result     #Viewに送るために引数に入れる
+    @game_title_all = Game.all.pluck(:game_title)
+  end
+  
+  def after_sign_in_path_for(resource)
+    public_homes_top_path(resource)
   end
 
   def configure_permitted_parameters

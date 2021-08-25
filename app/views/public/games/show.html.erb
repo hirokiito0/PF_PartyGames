@@ -96,12 +96,15 @@
               <!--rateを表示-->
               <div class="comment-rating" data-score="<%= game_comment.rate %>">評価：
                 <script>
+                  $('.comment-rating').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
                   $('.comment-rating').raty({
                     readOnly: true,
                     score: function() {
                     return $(this).attr('data-score');
                     },
-                    path: '/assets/'
+                    starOn: "<%= asset_path('star-on.png') %>",
+                    starOff: "<%= asset_path('star-off.png') %>",
+                    starHalf: "<%= asset_path('star-half.png') %>",
                   });
                 </script>
               </div>

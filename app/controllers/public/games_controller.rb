@@ -1,10 +1,12 @@
 class Public::GamesController < ApplicationController
   def index
     @games = Game.all
+    params[:q] = { sorts: 'id desc' }
+    @search = Game.ransack()
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game    = Game.find(params[:id])
     @comment = Comment.new
     # 下記コードで評価の平均を取得
     @average_rate = Comment.where(game_id: params[:id]).average(:rate)
@@ -40,6 +42,24 @@ class Public::GamesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def search
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @search = Game.ransack(search_params)
+      @games  = @search.result
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Game.ransack()
+      @games  = Game.all
+    end
+    render :index
+  end
+
+  def search_params
+    params.require(:q).permit(:sorts)
   end
 
   private

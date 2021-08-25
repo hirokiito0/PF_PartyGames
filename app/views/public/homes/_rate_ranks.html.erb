@@ -1,0 +1,36 @@
+<h4>評価TOP5</h4>
+<div>
+  <% @rate_ranks.first(5).each.with_index(1) do |game, i| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>第<%= i %>位</th>
+      </tr>
+      <tr>
+        <th>
+          <% average_rate = Comment.where(game_id: game.id ).average(:rate) %>
+          <div id="average-comment-rating-<%= game.id %>" data-score=<%= average_rate %>></div>
+          <script>
+            $('#average-comment-rating-<%= game.id %>').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
+            $('#average-comment-rating-<%= game.id %>').raty({    // 上記で出した平均値を星に反映させる
+              readOnly: true,
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              starHalf: "<%= asset_path('star-half.png') %>",
+              score: function() {
+                return $(this).attr('data-score')
+              }
+            });
+          </script>
+        </th>
+
+        <th>
+          <%= link_to public_game_path(game), method: :delete do %>
+            <%= game.game_title %>
+          <% end %>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

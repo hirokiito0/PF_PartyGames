@@ -1,0 +1,24 @@
+<h4>いいね数ランキングTOP5
+</h4>
+<div>
+  <% @iine_ranks.first(5).each.with_index(1) do |game, i| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>第<%= i %>位</th>
+      </tr>
+      <tr>
+        <th>
+          <%= game.favorites.count %>
+        </th>
+
+        <th>
+          <%= link_to public_game_path(game), method: :delete do %>
+            <%= game.game_title %>
+          <% end %>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

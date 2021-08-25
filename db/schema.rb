@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_040004) do
+ActiveRecord::Schema.define(version: 2021_08_23_063113) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2021_08_16_040004) do
     t.float "rate", default: 0.0, null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "message", null: false
+    t.integer "subject", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "game_id", null: false
@@ -45,10 +54,10 @@ ActiveRecord::Schema.define(version: 2021_08_16_040004) do
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.string "game_title", default: "", null: false
-    t.text "game_introduction", default: "", null: false
-    t.text "recommended", default: "", null: false
+    t.string "game_introduction", default: "", null: false
+    t.string "recommended", default: "", null: false
     t.string "game_image_id"
-    t.integer "price", null: false
+    t.integer "price", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
