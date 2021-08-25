@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-    @iine_ranks = Game.find(Favorite.group(:game_id).order('count(game_id) desc').limit(5).pluck(:game_id))
-    #@rate_ranks = Game.find(Comments.rate.group(:game_id).order('(game_id) desc').limit(5).pluck(:game_id))
+    @iine_ranks = Game.left_joins(:favorites).group(:id).select("games.*, count(favorites.id) as favorite_count").order("favorite_count desc")
+    @rate_ranks = Game.find(Comment.group(:rate).order('avg(rate) desc').pluck(:game_id))
   end
 end
