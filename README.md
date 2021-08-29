@@ -16,7 +16,9 @@
 <新しいボードゲームの情報が欲しい時、子供と一緒に遊ぶのに最適なボードゲームを知りたい時、盛り上がるゲームを知りたい時>
 
 ## 設計書
-<...>
+< ER図：https://app.diagrams.net/#G1C0rOOYKpZv_g4rWc285BdbaqEpTdDBFq >
+< ワイヤーフレーム：https://app.diagrams.net/#G1CYxtnfP4xjXtgcrTEy7TS4Vsm5LtuGV7 >
+< テーブル定義書：https://docs.google.com/spreadsheets/d/1oPYgGrDmkoPgmAIdW_vlqRnDNBVaS3369k9WOvnvtxs/edit#gid=1373217982 
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/16tldq1dqGgxi3ngyheHgnR1xy7gDgAsDOPrmnRx2u0I/edit?usp=sharing>
@@ -29,6 +31,6 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- いらすとや ：https://www.irasutoya.com
+- 写真AC：https://www.photo-ac.com
 

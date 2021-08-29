@@ -175,7 +175,7 @@ Game.create(
                       その後の人生が左右されていく。プレイヤーはサイコロではなく「ルーレット」を回し、
                       人の一生になぞらえたイベントをこなしていく、そんな人生の体験ができるゲームです",
       price: '3000',
-      game_image: open('app/assets/images/game-3.png'),
+      game_image: open('app/assets/images/game-5.png'),
       created_at: '2020-09-14 07:20:50'
     },
 
@@ -186,7 +186,7 @@ Game.create(
       recommended: "同一グループを揃え、家やホテルを建設することで他のプレイヤーから高額なレンタル料を徴収して自らの資産を増し、
                       最終的に他のプレイヤーを全て破産させることを目的とするそんなゲームです",
       price: '2000',
-      game_image: open('app/assets/images/game-5.png'),
+      game_image: open('app/assets/images/game-6.jpg'),
       created_at: '2020-09-15 14:13:11'
     },
 
@@ -196,7 +196,7 @@ Game.create(
       game_introduction: '二人でできる「こいこい」、３人でできる「花合わせ」があるゲームです',
       recommended: '2人でプレイする「こいこい」は、勝負勘・度胸・かけひき・冷静さを必要とする知的ゲームです。',
       price: '1000',
-      game_image: open('app/assets/images/game-7.png'),
+      game_image: open('app/assets/images/game-7.jpg'),
       created_at: '2020-010-15 16:08:15'
     },
 
@@ -408,152 +408,3 @@ Comment.create(
   ]
 )
 
-# Favorite.create(
-#   user_id: "1"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "1"
-#   game_id: "3"
-#   )
-
-# Favorite.create(
-#   user_id: "1"
-#   game_id: "7"
-#   )
-
-# Favorite.create(
-#   user_id: "1"
-#   game_id: "6"
-#   )
-
-# Favorite.create(
-#   user_id: "2"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "2"
-#   game_id: "2"
-#   )
-
-# Favorite.create(
-#   user_id: "2"
-#   game_id: "7"
-#   )
-
-# Favorite.create(
-#   user_id: "3"
-#   game_id: "3"
-#   )
-
-# Favorite.create(
-#   user_id: "3"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "3"
-#   game_id: "8"
-#   )
-
-# Favorite.create(
-#   user_id: "4"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "4"
-#   game_id: "4"
-#   )
-
-# Favorite.create(
-#   user_id: "4"
-#   game_id: "7"
-#   )
-
-# Favorite.create(
-#   user_id: "5"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "5"
-#   game_id: "5"
-#   )
-
-# Favorite.create(
-#   user_id: "5"
-#   game_id: "6"
-#   )
-
-# Favorite.create(
-#   user_id: "6"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "6"
-#   game_id: "2"
-#   )
-
-# Favorite.create(
-#   user_id: "6"
-#   game_id: "3"
-#   )
-
-# Favorite.create(
-#   user_id: "7"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "7"
-#   game_id: "4"
-#   )
-
-# Favorite.create(
-#   user_id: "7"
-#   game_id: "5"
-#   )
-
-# Favorite.create(
-#   user_id: "8"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "8"
-#   game_id: "6"
-#   )
-
-# Favorite.create(
-#   user_id: "8"
-#   game_id: "7"
-#   )
-
-# Favorite.create(
-#   user_id: "9"
-#   game_id: "1"
-#   )
-
-# Favorite.create(
-#   user_id: "9"
-#   game_id: "4"
-#   )
-
-# Favorite.create(
-#   user_id: "9"
-#   game_id: "6"
-#   )
-
-# Favorite.create(
-#   user_id: "10"
-#   game_id: "5"
-#   )
-
-# Favorite.create(
-#   user_id: "10"
-#   game_id: "7"
-#   )
