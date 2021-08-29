@@ -90,6 +90,7 @@
             scoreName: 'comment[rate]'
         });
       </script>
+
       <% end %>
       <div id="commentsArea-<%= @game.id %>">
         <%= render partial: "public/comments/comment", locals: { comments: @comments }%>
