@@ -18,8 +18,8 @@ class Game < ApplicationRecord
     Arel.sql(query)
   end
 
-  ransacker :rates_count do
-    query = '(SELECT (comments.rate) FROM comments where comments.game_id = games.id )'
+  ransacker :rates_average do
+    query = '(SELECT AVG(comments.rate) FROM comments where comments.game_id = games.id )'
     Arel.sql(query)
   end
 
