@@ -74,3 +74,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# 追加するぞ
+gem 'rubocop' , require: false
+gem 'rubocop-rails' , require: false
