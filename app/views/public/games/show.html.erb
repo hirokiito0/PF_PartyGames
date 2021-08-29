@@ -9,23 +9,23 @@
       <table class="table">
         <tbody>
           <tr>
-           <th>ゲームタイトル</th>
+           <th class="col-3">ゲームタイトル</th>
            <th><%= @game.game_title %></th>
           </tr>
           <tr>
-        　 <th>紹介</th>
+        　 <th class="col-3">紹介</th>
            <th><%= @game.game_introduction %></th>
           </tr>
           <tr>
-        　 <th>お勧めする点</th>
+        　 <th class="col-3">お勧めする点</th>
            <th><%= @game.recommended %></th>
           </tr>
           <tr>
-           <th>価格</th>
+           <th class="col-3">価格</th>
            <th> <%= @game.price %>円</th>
           </tr>
           <tr>
-            <th>評価</th>
+            <th class="col-3">評価</th>
             <th>
               <div class="average-comment-rating" data-score=<%= @average_rate %>></div>
                 <script>
@@ -43,7 +43,7 @@
             </th>
           </tr>
           <tr>
-            <th>
+            <th class="col-3">
               <% if admin_signed_in? %>
                 ♥<%= @game.favorites.count %>
               <% else %>
