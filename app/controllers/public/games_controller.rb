@@ -1,8 +1,8 @@
 class Public::GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games     = Game.all
     params[:q] = { sorts: 'id desc' }
-    @search = Game.ransack()
+    @search    = Game.ransack()
   end
 
   def show
@@ -60,24 +60,6 @@ class Public::GamesController < ApplicationController
       # 検索フォーム以外からアクセスした時の処理
       params[:q] = { sorts: 'id desc' }
       @search = Game.ransack
-      @games  = Game.all
-    end
-    render :index
-  end
-
-  def search_params
-    params.require(:q).permit(:sorts)
-  end
-
-  def search
-    if params[:q].present?
-    # 検索フォームからアクセスした時の処理
-      @search = Game.ransack(search_params)
-      @games  = @search.result
-    else
-    # 検索フォーム以外からアクセスした時の処理
-      params[:q] = { sorts: 'id desc' }
-      @search = Game.ransack()
       @games  = Game.all
     end
     render :index

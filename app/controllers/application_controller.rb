@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_search
 
   def set_search
-    @search = Game.ransack(params[:q]) # 検索ワードを受け取る
-    @search_games = @search.result     # Viewに送るために引数に入れる
+    @search         = Game.ransack(params[:q]) # 検索ワードを受け取る
+    @search_games   = @search.result     # Viewに送るために引数に入れる
     @game_title_all = Game.all.pluck(:game_title)
   end
 

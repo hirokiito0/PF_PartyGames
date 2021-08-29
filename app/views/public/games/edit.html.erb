@@ -3,7 +3,6 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2 class='text-center' style="margin-bottom: 20px; padding: 10px;">投稿ゲーム編集</h2>
     <%= form_with model: @game, url: public_game_path(@game), local:true do |f| %>
-      <%#= render 'layouts/errors', obj: @user %>
 
       <div class="form-group">
         <%= f.label :game_title %>
