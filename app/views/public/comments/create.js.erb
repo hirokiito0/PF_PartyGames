@@ -1,0 +1,2 @@
+$("#commentsArea-<%= @game.id %>").html("<%= j(render 'public/comments/comment', { comments: @comment.game.comments }) %>")
+$(".inputComment").val('');

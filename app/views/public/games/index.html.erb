@@ -1,14 +1,15 @@
 <h1 class="item pt-1 pl-3 text-center">投稿ゲーム一覧</h1>
 <div class="container px-5 px-sm-0">
   <div class="row">
+  <%= render 'public/games/sort' %>
   <table class="table table-hover table-inverse">
-    <%= render 'public/games/sort' %>
     <thead>
       <tr>
       <th></th>
       <th></th>
       <th>ゲームタイトル</th>
       <th>紹介文</th>
+      <th>値段</th>
       <th>いいね数</th>
       <th>評価</th>
       </tr>
@@ -24,6 +25,7 @@
         <td></td>
         <td><%= link_to game.game_title, public_game_path(game.id) %></td>
         <td><%= game.game_introduction %></td>
+        <td><%= game.price %></td>
         <td>
             ♥<%= game.favorites.count %>
         </td>

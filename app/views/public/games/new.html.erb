@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
-      <h1>ゲーム新規投稿</h1>
+      <h2 class='text-center' style="margin-bottom: 20px; padding: 10px;">ゲーム新規投稿</h1>
       <%= form_with model: @game, url: public_games_path , local:true do |f| %>
       <table class="table-inverse">
         <tbody>
@@ -25,13 +25,6 @@
             <th>お勧めする点</th>
             <th><%= f.text_area :recommended, size: "40x5", placeholder:"お勧めする点を記載してください" %></th>
           </tr>
-
-          <!--<tr height="50">-->
-          <!--  <th>タグ</th>-->
-          <!--  <th>-->
-          <!--    <%#= game.collection_select:tag_id, tag.all, :id, :name,include_blank: "選択して下さい"%>-->
-          <!--  </th>-->
-          <!--</tr>-->
 
           <tr height="50">
             <th>税抜価格</th>

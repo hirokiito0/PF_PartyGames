@@ -1,34 +1,33 @@
 <header>
-  <nav class = "navbar navbar-expand-lg navbar-light bg-light p-4">
+  <nav class = "navbar navbar-expand-lg navbar-light bg-success p-4">
     <div class = "container">
+      <a class = "navbar-brand" href = "/"><span>Let's!! PartyGames</span></a>
       <% if admin_signed_in? || user_signed_in? %>
-        <%= link_to "Let's!! PartyGames", public_homes_top_path , class: "navbar-brand" %>
-      <% else %>
-        <a class = "navbar-brand" href = "/"><span>Let's!! PartyGames</span></a>
+        <%= render 'layouts/search' %>
       <% end %>
-      <button class = "navbar-toggler" type = "button" data-toggle = "collapse" data-target = "#navbarSupportedContent" aria-controls = "navbarSupportedContent" aria-expanded = "false" aria-label = "Toggle navigation">
+      <button class = "navbar-toggler collapsed" type = "button" data-toggle = "collapse" data-target = "#navbarNavDropdown" aria-controls = "navbarNavDropdown" aria-expanded = "false" aria-label = "Toggle navigation">
         <span class = "navbar-toggler-icon"></span>
       </button>
       <div class = "collapse navbar-collapse" id = "navbarNavDropdown">
         <ul class = "navbar-nav ml-auto">
         <% if admin_signed_in? %>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム投稿',   new_admin_game_path,        class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   admin_games_path,           class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' 会員一覧 ',    admin_users_path,           class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' タグ一覧', '#',    class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_admin_session_path, class: "btn btn-outline-dark",method: :delete %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   public_games_path,          class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' 会員一覧 ',    admin_users_path,           class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_admin_session_path, class: "btn btn-outline-warning",method: :delete %></div></li>
         <% elsif user_signed_in? %>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム投稿',   new_public_game_path,           class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   public_games_path,              class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' マイページ',   public_user_path(current_user), class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_user_session_path,      class: "btn btn-outline-dark", method: :delete %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム投稿',   new_public_game_path,           class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ゲーム一覧',   public_games_path,              class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' マイページ',   public_user_path(current_user), class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ログアウト',   destroy_user_session_path,      class: "btn btn-outline-warning", method: :delete %></div></li>
         <% else %>
-          <li><div class = "ml-5" ><%= link_to ' 新規登録',     new_user_registration_path, class: "btn btn-outline-dark" %></div></li>
-          <li><div class = "ml-5" ><%= link_to ' ログイン',     new_user_session_path ,     class: "btn btn-outline-dark" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' 新規登録',     new_user_registration_path, class: "btn btn-outline-warning" %></div></li>
+          <li><div class = "ml-5" ><%= link_to ' ログイン',     new_user_session_path ,     class: "btn btn-outline-warning" %></div></li>
         <% end %>
+          <li></li>
         </ul>
+
       </div>
+
     </div>
-    <%= render 'layouts/search' %>
   </nav>
 </header>

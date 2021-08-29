@@ -1,14 +1,46 @@
-<div class="row">
-    <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1>ようこそ! <i class="fas fa-book"></i><strong>Let's!! PartyGames</strong>  へ!!</h1>
-      <div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <%= link_to 'ログイン',new_user_session_path      , class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
-        </div>
-        <div class="row">
-          <%= link_to '新規登録',new_user_registration_path , class: "btn btn-success btn-sm btn-block sign_up" %>
+
+  <div>
+  <section class="py-5 text-center container bg-warning">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light"><strong>Let's!! PartyGames</strong>  へようこそ!!</h1>
+          <p class="text-muted">
+            このサイトは様々なボードゲームについての情報を共有するサイトです。<br>
+            パーティを盛り上げたいとき、小さな子供と一緒に遊びたい時など、<br>
+            楽しいボードゲームの情報をお届けします。
+          </p>
+          <% unless user_signed_in? || admin_signed_in? %>
+          <p>
+            <div class="btn-wrapper col-10 mx-auto">
+              <div class="row">
+                <%= link_to 'ログイン',new_user_session_path      , class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+              </div>
+              <div class="row">
+                <%= link_to '新規登録',new_user_registration_path , class: "btn btn-success btn-sm btn-block sign_up" %>
+              </div>
+            </div>
+          </p>
+          <% end %>
         </div>
       </div>
+    </section>
+  </div>
+      <% if user_signed_in? || admin_signed_in? %>
+      <div class="row justify-content-center" >
+        <table class="table col-10">
+            <tbody>
+              <tr>
+                <th class="col-1"><%= render 'homes/iine_ranks' %></th>
+                <th class="col-6"><%= render 'homes/new_games' %></th>
+                <th class="col-1"><%= render 'homes/rate_ranks' %></th>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+
+

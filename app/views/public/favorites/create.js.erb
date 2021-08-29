@@ -1,0 +1,1 @@
+$("#favorites-<%= @game.id %>").html("<%= j(render partial: 'public/favorites/favorite', locals: { game: @game }) %>");

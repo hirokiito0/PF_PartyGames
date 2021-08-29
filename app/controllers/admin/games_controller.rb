@@ -11,8 +11,7 @@ class Admin::GamesController < ApplicationController
     @game = Game.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @game         = Game.new(games_params)
@@ -24,6 +23,5 @@ class Admin::GamesController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 end
