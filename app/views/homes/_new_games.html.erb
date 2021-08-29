@@ -1,0 +1,41 @@
+<h4 class='text-center bg-secondary ranking text-light'>新着ゲーム</h4>
+<div class="bg-secondary ranking ">
+  <% @new_games.first(5).each.with_index(1) do |game, i| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th class="text-center text-light">~<%= i %>~</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to public_game_path(game) do %>
+                  <%= game.game_title %>
+                <% end %>
+              </h5>
+              <p>♥<%= game.favorites.count %></p>
+              <p class="card-text"><%=game.game_introduction %></p>
+              <% average_rate = Comment.where(game_id: game.id ).average(:rate) %>
+              <div id="average-comment-rating-n-<%= game.id %>" data-score=<%= average_rate %>></div>
+              <script>
+                $('#average-comment-rating-n-<%= game.id %>').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
+                $('#average-comment-rating-n-<%= game.id %>').raty({    // 上記で出した平均値を星に反映させる
+                  readOnly: true,
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  starHalf: "<%= asset_path('star-half.png') %>",
+                  score: function() {
+                    return $(this).attr('data-score')
+                  }
+                });
+              </script>
+            </div>
+          </div>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

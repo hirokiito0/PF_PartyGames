@@ -1,4 +1,4 @@
-<h1>ゲーム詳細</h1>
+<h1 class="text-center">ゲーム詳細</h1>
 
 <div class='container px-5 px-sm-0'>
   <div class='row'>
@@ -20,10 +20,6 @@
         　 <th>お勧めする点</th>
            <th><%= @game.recommended %></th>
           </tr>
-          <!--<tr>-->
-          <!--  <th>ジャンル</th>-->
-          <!--  <th><%#= @item.genre.name %></th>-->
-          <!--</tr>-->
           <tr>
            <th>価格</th>
            <th> <%= @game.price %>円</th>
@@ -48,89 +44,57 @@
           </tr>
           <tr>
             <th>
-              <% if @game.favorited_by?(current_user) %>
-              <p>
-                <%= link_to public_game_favorites_path(@game), method: :delete do %>
-                  ♥<%= @game.favorites.count %> いいね
-                <% end %>
-              </p>
+              <% if admin_signed_in? %>
+                ♥<%= @game.favorites.count %>
               <% else %>
-              <p>
-                <%= link_to public_game_favorites_path(@game), method: :post do %>
-                  ♡<%= @game.favorites.count %> いいね
-                <% end %>
-              </p>
+                <span id="favorites-<%= @game.id %>">
+                  <%= render "public/favorites/favorite", locals: { game: @game } %>
+                </span>
+              <% end %>
+            </th>
+            <th>
+              <% if @game.user == current_user || admin_signed_in? %>
+                  <%= link_to public_game_path(@game), method: :delete, class: "btn btn-sm btn-danger" do %>
+                      投稿削除 <i class="fas fa-trash"></i>
+                  <% end %>
               <% end %>
             </th>
           </tr>
         </tbody>
       </table>
+      <% if @game.user == current_user %>
       <div class='row'>
-        <%= link_to '編集',edit_public_game_path(@game),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@game.id}" %>
+        <%= link_to '編集',edit_public_game_path(@game),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{@game.id}", style: "margin-bottom: 20px;" %>
       </div>
+      <% end %>
 
-      <%= form_with(model: [@game, @comment], url: public_game_comments_path(@game), local: true) do |f| %>
-          <%#= render 'layouts/error_messages', object: f.object %>
+      <% if user_signed_in? %>
+      <%= form_with(model: [@game, @comment], id: "new-comment", url: public_game_comments_path(@game), remote: true) do |f| %>
+        <%#= render 'layouts/error_messages', object: f.object %>
 
-          <%= f.text_area :comment, rows:'5', placeholder: "コメント入力してください", class: "form-control form-control-sm" %>
-          <div id="rating-form">
-              <label>評価：</label>
-              <!--scoreNameの値をhidden_fieldでカラムに送っている-->
-              <%= f.hidden_field :rate, :value => 'score' %>
-          </div>
+        <%= f.text_area :comment, rows:'5', placeholder: "コメント入力してください", class: "inputComment form-control form-control-sm" %>
+        <div id="rating-form">
+            <label>評価：</label>
+            <!--scoreNameの値をhidden_fieldでカラムに送っている-->
+            <%= f.hidden_field :rate, :value => 'score' %>
+        </div>
 
-          <%= f.submit "投稿する" %>
+        <%= f.submit "投稿する", style: "margin-bottom: 20px;" %>
       <% end %>
 
 
       <script>
-          $('#rating-form').raty({
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              scoreName: 'comment[rate]'
-          });
+        $('#rating-form').raty({
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            scoreName: 'comment[rate]'
+        });
       </script>
 
-      <% @game.comments.each do |game_comment| %>
-          <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
-              <!--rateを表示-->
-              <div class="comment-rating" data-score="<%= game_comment.rate %>">評価：
-                <script>
-                  $('.comment-rating').empty();  // 下記だけでは星がいくつも表示されてしまうので一度空にする
-                  $('.comment-rating').raty({
-                    readOnly: true,
-                    score: function() {
-                    return $(this).attr('data-score');
-                    },
-                    starOn: "<%= asset_path('star-on.png') %>",
-                    starOff: "<%= asset_path('star-off.png') %>",
-                    starHalf: "<%= asset_path('star-half.png') %>",
-                  });
-                </script>
-              </div>
-
-              <div class="text-left">
-                  <p>投稿者：<%= game_comment.user.name %></p>
-                  <p><%= game_comment.comment %></p>
-                  <%#= attachment_image_tag(game_comment, :image_id, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-              </div>
-
-              <div class="text-right">
-                  <p>
-                      投稿日：<%= game_comment.created_at.strftime('%Y/%m/%d') %> |
-                      <% if game_comment.user == current_user %>
-                          <%= link_to public_game_comment_path(game_comment.game, game_comment), method: :delete, class: "btn btn-sm btn-danger" do %>
-                              コメント削除 <i class="fas fa-trash"></i>
-                          <% end %>
-                      <% end %>
-                  </p>
-              </div>
-          </div>
-
-          <div class="pb-2"></div>
-
       <% end %>
-
+      <div id="commentsArea-<%= @game.id %>">
+        <%= render partial: "public/comments/comment", locals: { comments: @comments }%>
+      </div>
     </div>
   </div>
 </div>

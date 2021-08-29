@@ -14,3 +14,14 @@
  *= require_self
  */
  @import "bootstrap";
+ .form-inline{
+   flex-flow: row nowrap !important;
+ }
+
+ .ranking{
+  border: solid 1px #2b2b2b;
+ }
+
+ body{
+  height: 100vh;
+ }
