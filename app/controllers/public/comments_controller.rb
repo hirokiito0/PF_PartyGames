@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to public_games_path
+    # redirect_to public_games_path
   end
 
   private
