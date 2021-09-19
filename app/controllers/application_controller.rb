@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
     @search         = Game.ransack(params[:q]) # 検索ワードを受け取る
     @search_games   = @search.result     # Viewに送るために引数に入れる
     @game_title_all = Game.all.pluck(:game_title)
+    if params.has_key?(:q) && params[:q].has_key?(:game_title_cont)
+      @game_title_cont = params[:q][:game_title_cont]
+    end
   end
 
   def configure_permitted_parameters

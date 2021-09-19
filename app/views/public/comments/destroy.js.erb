@@ -1,1 +1,4 @@
-$("#commentsArea-<%= @game.id %>").html("<%= j(render partial: 'public/comments/comment', locals: { game: @game }) %>");
+$("#commentsArea-<%= @game.id %>").html("<%= j(render 'public/comments/comment', { comments: @comment.game.comments }) %>");
+<!--↑コメント削除するとすぐ消えるようにするコード↑-->
+$("#average-rating-<%= @game.id %>").html("<%= j(render 'public/average_rate/average_rating', { comments: @comment.game.comments, average_rate: @average_rate }) %>");
+<!--↑コメント削除時の星評価平均の変化を表示させるコードド　average_rate: @average_rateで星評価平均の値を受け取っている-->

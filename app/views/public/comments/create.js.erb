@@ -1,2 +1,6 @@
 $("#commentsArea-<%= @game.id %>").html("<%= j(render 'public/comments/comment', { comments: @comment.game.comments }) %>")
+<!--↑投稿したコメントを表示させるコード-->
 $(".inputComment").val('');
+<!--↑コメント投稿したら投稿フォームをからにするコード-->
+$("#average-rating-<%= @game.id %>").html("<%= j(render 'public/average_rate/average_rating', { comments: @comment.game.comments, average_rate: @average_rate }) %>");
+<!--↑コメント投稿時に星評価平均の変化を表示させるコード　average_rate: @average_rateで星評価平均の値を受け取っている-->

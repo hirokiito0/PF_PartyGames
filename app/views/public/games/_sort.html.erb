@@ -1,9 +1,10 @@
 <%= search_form_for @search, url: search_public_games_path ,html: { method: :post } do |f| %>
-  並び替え<%= f.select( :sorts, { '価格の安い順':    'price asc',
-                                  '価格の高い順':    'price desc',
-                                  '投稿の古い順':    'created_at asc',
+  並び替え<%= f.select( :sorts, { '投稿の古い順':    'created_at asc',
                                   '投稿の新しい順':  'created_at desc',
+                                  '価格の高い順':    'price desc',
+                                  '価格の安い順':    'price asc',
                                   'いいね!の多い順': 'favorites_count desc',
                                   '評価の高い順':    'rates_average desc' } , { selected: params[:q][:sorts] } ) %>
+  <%= f.hidden_field :game_title_cont, :value => game_title_cont %>
   <%= f.submit '完了' , style: "margin-bottom: 20px;"%>
 <% end %>

@@ -9,7 +9,7 @@ class Public::GamesController < ApplicationController
     @game    = Game.find(params[:id])
     @comment = Comment.new
     # 下記コードで評価の平均を取得
-    @average_rate = Comment.where(game_id: params[:id]).average(:rate)
+    # @average_rate = Comment.where(game_id: params[:id]).average(:rate)
     # gameに保存されているcommentの情報を受け取りaverage(rate)によってrateの平均を出す
   end
 
