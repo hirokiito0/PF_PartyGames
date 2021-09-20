@@ -59,8 +59,8 @@ class Public::GamesController < ApplicationController
     else
       # 検索フォーム以外からアクセスした時の処理
       params[:q] = { sorts: 'id desc' }
-      @search = Game.ransack
-      @games  = Game.all
+      @search    = Game.ransack
+      @games     = Game.all
     end
     render :index
   end
@@ -76,6 +76,7 @@ class Public::GamesController < ApplicationController
                                  :game_image,
                                  :game_introduction,
                                  :recommended,
-                                 :price)
+                                 :price
+                                 )
   end
 end

@@ -1,7 +1,6 @@
 <h1 class="item pt-1 pl-3 text-center">投稿ゲーム一覧</h1>
 <div class="container px-5 px-sm-0">
   <div class="row">
-  <%=  @game_title_cont %>
   <%= render partial: 'public/games/sort', locals: { game_title_cont: @game_title_cont }  %>
   <table class="table table-hover table-inverse">
     <thead>
