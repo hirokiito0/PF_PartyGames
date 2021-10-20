@@ -3,6 +3,7 @@ class Public::GamesController < ApplicationController
     @games     = Game.all
     params[:q] = { sorts: 'id desc' }
     @search    = Game.ransack()
+    
   end
 
   def show
