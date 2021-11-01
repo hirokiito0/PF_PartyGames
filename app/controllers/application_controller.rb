@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     @game_title_all = Game.all.pluck(:game_title)
     if params.has_key?(:q) && params[:q].has_key?(:game_title_cont)
       @game_title_cont = params[:q][:game_title_cont]
-      
     end
   end
 
