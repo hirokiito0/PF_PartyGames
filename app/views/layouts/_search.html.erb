@@ -2,9 +2,9 @@
   <%= search_form_for @search, url: public_games_path , class: "form-inline" do |f| %>
     <%= f.text_field :game_title_cont ,list: "title_list", class: "form-control me-2 ", placeholder: 'ゲームタイトルを入力...', size: "25" %>
     <datalist id="title_list">
-        <% @game_title_all.each do |title| %>
-            <option value="<%= title %>">
-        <% end %>
+      <% @game_title_all.each do |title| %>
+          <option value="<%= title %>">
+      <% end %>
     </datalist>
     <%= f.submit ("検索") , class: 'btn btn-secondary'%>
   <% end %>
